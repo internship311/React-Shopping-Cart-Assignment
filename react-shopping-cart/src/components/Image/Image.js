@@ -1,9 +1,9 @@
 import React from 'react';
 import './Image.scss';
 
-const Image = ({source, alt}) => {
+const Image = ({source, alt, className = ""}) => {
     return (
-            <img src={source} className="image-wrapper" alt={alt} />
+            <img src={source} className= {`${className} image-wrapper`} alt={alt} />
     )
 }
 
