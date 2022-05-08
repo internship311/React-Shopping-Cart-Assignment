@@ -14,8 +14,8 @@
     position: relative;
 
     &:active {
-        top: 0.7px;
-        left: 0.7px;
+        top: 0.6px;
+        left: 0.6px;
     }
 
     @media screen and (max-width: $breakpoint-mobile){

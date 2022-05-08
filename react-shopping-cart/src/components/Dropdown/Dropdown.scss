@@ -2,13 +2,12 @@
 
 .dropdown {
     display: flex;
-    flex-direction: column;
-    background-color: #e22b62;
-    width: 100%;
+  flex-direction: column;
+  background-color: #e22b62;
+  width: 100%;
+  position: relative;
 
-    position: relative;
-
-    &__button {
+  &__button {
         display: flex;
         justify-content: space-between;
         border: none;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Form.scss";
-import Button from "../../atoms/Button/Button";
-import Inputbox from "../../atoms/Inputbox/Inputbox";
+import Button from "../Button/Button";
+import Inputbox from "../InputBox/InputBox";
 
 const Form = ({ className = "", inputLabel, button }) => {
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ const Form = ({ className = "", inputLabel, button }) => {
           inputId={input.inputId}
         />
       ))}
-      <Button button={button} className={"form__login-button"} />
+      <Button className={"form__login-button"}>{button}</Button>
     </form>
   );
 }

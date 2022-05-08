@@ -7,32 +7,32 @@ import Cart from '../Cart/Cart';
 const Header = () => {
     return (
         <header className="header">
-          <div className="header-sub-container">
+          <div className="header__sub-container">
             <Link to="/">
               <Logo />
             </Link>
-            <nav className="header-sub-container-nav-items">
-              <Link to="/" className="header-sub-container-nav-items-link">
+            <nav className="header__sub-container__nav-items">
+              <Link to="/" className="header__sub-container__nav-items-link">
                 Home
               </Link>
               <Link
                 to="/products"
-                className="header-sub-container-nav-items-link"
+                className="header__sub-container__nav-items-link"
               >
                 Products
               </Link>
             </nav>
-            <div className="header-sub-container-nav-wrapper">
-              <nav className="header-sub-container-nav-wrapper-login">
+            <div className="header__sub-container__nav-wrapper">
+              <nav className="header__sub-container__nav-wrapper__login">
                 <Link
                   to="/signin"
-                  className="header-sub-container-nav-wrapper-login-link"
+                  className="header__sub-container__nav-wrapper__login-link"
                 >
                   SignIn
                 </Link>
                 <Link
                   to="/register"
-                  className="header-sub-container-nav-wrapper-login-link"
+                  className="header__sub-container-nav-wrapper-login-link"
                 >
                   Register
                 </Link>

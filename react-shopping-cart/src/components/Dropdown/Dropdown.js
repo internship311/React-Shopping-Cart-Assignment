@@ -11,11 +11,10 @@ const Dropdown = ({ filteredCategory, handleProduct }) => {
 
     return (
         <div className="dropdown">
-          <Button
-            onClick={() => handleDropdown()}
-            className="dropdown__button"
-            button={`All Products ▼`}
-          />
+          <Button onClick={() => handleDropdown()} className="dropdown__button">
+        <span>All Products</span>
+        <span>&#x25BC;</span>
+      </Button>
           <ul className="dropdown__content">
             {filteredCategory.map((category) => (
               <li
