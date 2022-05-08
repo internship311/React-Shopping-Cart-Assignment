@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './styles/_base.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
+import GlobalContextProvider from './contexts/GlobalContext';
 import reportWebVitals from './reportWebVitals';
+import ProductContextProvider from './contexts/ProductContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <App />
+    <GlobalContextProvider>
+      <ProductContextProvider>
+      <App />
+      </ProductContextProvider>
+    </GlobalContextProvider>
   </Router>
 );
 

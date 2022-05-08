@@ -1,6 +1,6 @@
 import React from 'react';
-import WrapperText from '../../molecules/WrapperText/WrapperText';
-import Form from '../../organisms/Form/Form';
+import WrapperText from '../WrapperText/WrapperText';
+import Form from '../Form/Form';
 import './Register.scss';
 
 const Register = () => {

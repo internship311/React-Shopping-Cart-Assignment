@@ -15,15 +15,9 @@
         grid-gap: 1rem;
         padding: 1rem;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-template-rows: repeat(auto-fill, minmax(375px, 1fr));
-
-        @media screen and (max-width: $breakpoint-tablet) {
-            grid-template-rows: repeat(auto-fill, minmax(250px, 300px));
-        }
-
+    
         @media screen and (max-width: $breakpoint-mobile) {
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(auto-fill, minmax(200px, 250px));
+          grid-template-columns: 1fr;
         }
     }
 }

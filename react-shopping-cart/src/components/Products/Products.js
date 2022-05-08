@@ -5,10 +5,11 @@ import Dropdown from '../Dropdown/Dropdown';
 import Sidebar from '../Sidebar/Sidebar';
 import Card from '../Card/Card';
 import './Products.scss';
+import useProducts from '../../utils/useProducts';
 
 const Products = () => {
     // const { filteredProduct, handleProduct } = useContext(ProductContext);
-    const { filteredCategory, filteredProduct, handleProduct } = useContext(ProductContext);
+    const { filteredCategory, filteredProduct, handleProduct } = useProducts();
 
     const browserWidth = useMediaQuery("(max-width: 480px)");
 

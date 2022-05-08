@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import { cartReducers } from "../reducers/cartReducers";
+import { cartReducers } from "../reducers/cartRedcuers";
 
 const initialState = {
   count: 0,

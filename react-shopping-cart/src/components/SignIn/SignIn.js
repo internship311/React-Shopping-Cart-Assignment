@@ -1,7 +1,7 @@
 import React from 'react';
-import './Signin.scss';
-import Form from '../../organisms/Form/Form';
-import WrapperText from '../../molecules/WrapperText/WrapperText';
+import './SignIn.scss';
+import Form from '../Form/Form';
+import WrapperText from '../WrapperText/WrapperText';
 
 const Signin = () => {
     const inputLabel = [

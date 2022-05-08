@@ -1,60 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
 import Products from './components/Products/Products';
-import Signin from './components/Signin/Signin';
-import Register from './components/SignIn';
-import CartPage from './components/pages/CartPage/Cartpage';
+import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
+import CartPage from './components/CartPage/CartPage';
+
+import ProductContextProvider from "./contexts/ProductContext";
+import GlobalContextProvider from "./contexts/GlobalContext";
+import { GlobalContext } from './contexts/GlobalContext';
+import CartModal from "./components/CartModal/CartModal";
 
 import Categories from './categories/index.get.json';
 import ProductValue from './products/index.get.json';
 
 
 const App = () => {
+  const {
+    cartItems: { cartOpen },
+  } = useContext(GlobalContext);
 
-  const history = useNavigate();
-  const location = useLocation();
+  return (
+    <>
+      <Header />
+      <Routes>
+      <Route exact path="/" element={<Home />} />
+        <Route path="/products" element= {<Products />}/>
 
-  const [filteredProduct, setFilteredProduct] = useState(ProductValue);
+        <Route exact path="/signin" element={<SignIn />} />
+        <Route exact path="/register" element={<Register />} />
 
-  const filteredCategory = Categories
-                              .filter(category => category.enabled)
-                              .sort((a, b) => a.order - b.order);
-
-  useEffect(() => {
-      if(!location.search){
-          setFilteredProduct(ProductValue);
-      }
-  }, [location]);
-
-  function handleProduct(id) {
-      setFilteredProduct(ProductValue.filter((product) => product.category === id));
-      history.push({
-          pathname: `/products`,
-          search: `?query=${id}`
-      });
-  }
-
-    return(
-      <React.Fragment>
-        <Header />
-        <Routes>
-          <Route exact path="/" render={() => (
-          <Home filteredCategory={filteredCategory} handleProduct={handleProduct} />
-          )} />
-          <Route exact path="/products" render={() => (
-          <Products filteredCategory={filteredCategory} filteredProduct={filteredProduct} handleProduct={handleProduct} />
-          )} />
-          <Route exact path="/signin" component={Signin} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/cartpage" component={CartPage} />
-          </Routes>
-        <Footer />
-      </React.Fragment>
-    );
+        <Route
+          exact
+          path="/cartpage"
+          element={<CartPage />} />
+      </Routes>
+      <Footer />
+      {cartOpen ? <CartModal cartOpen={cartOpen} /> : ""}
+    </>
+  );
 }
 
 export default App;

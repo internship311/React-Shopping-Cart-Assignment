@@ -1,5 +1,5 @@
 import React from "react";
-import "./Inputbox.scss";
+import "./InputBox.scss";
 const Inputbox = ({ type, placeholder, inputId }) => {
   return (
     <>
