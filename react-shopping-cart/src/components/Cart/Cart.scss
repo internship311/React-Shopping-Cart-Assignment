@@ -11,17 +11,13 @@
     object-fit: contain;
     cursor: pointer;
 
-    @media screen and (min-width: $breakpoint-mobile) {
-        padding: 5px 0;
-    }
-
-    &-image {
+    &__image {
         width: 40px;
-    }
-
-    &-text {
+      }
+    
+      &__text {
         color: black;
         font-size: $text-font-size;
         margin-right: 5px;
-    }
+      }
 }

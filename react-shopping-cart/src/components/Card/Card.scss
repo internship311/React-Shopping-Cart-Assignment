@@ -6,12 +6,11 @@
   border-bottom: 1px dashed $nav-text-color;
 
   &__title {
-    min-height: 10vh;
+    min-height: 4rem;
     font-size: $text-font-size;
 
     @media screen and (max-width: $breakpoint-tablet) {
       grid-column: 1 / 3;
-      min-height: 8vh;
     }
   }
 
@@ -30,6 +29,9 @@
   }
 
   &__text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
     margin: 1rem 0;
     padding: 5px 5px;
     background-color: $secondary-color;
@@ -43,10 +45,12 @@
       grid-column: 2 / 3;
       margin: 0;
       height: 8rem;
+      -webkit-line-clamp: 7;
     }
 
     @media screen and (max-width: $breakpoint-mobile) {
       height: 5.8rem;
+      -webkit-line-clamp: 5;
     }
   }
 

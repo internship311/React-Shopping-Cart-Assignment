@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./Carousel.scss";
+//import "../Image/Image.scss";
 import ImageData from "../../banners/index.get.json";
 import Image from "../Image/Image";
+import Button from "../Button/Button";
 
 const Carousel = () => {
   const [current, setCurrent] = useState(1);
-  const [touchPosition, setTouchPosition] = useState(null);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
   const length = ImageData.length;
 
   const handleSlide = (slideOrder) => {
@@ -13,29 +17,22 @@ const Carousel = () => {
   };
 
   const handleTouchStart = (e) => {
-    const touchDown = e.touches[0].clientX;
-    setTouchPosition(touchDown);
+    setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(0);
   };
 
   const handleTouchMove = (e) => {
-    const touchDown = touchPosition;
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
 
-    if (touchDown === null) {
-      return;
-    }
-
-    const currentTouch = e.touches[0].clientX;
-    const diff = touchDown - currentTouch;
-
-    if (diff > 10) {
+  const handleTouchEnd = () => {
+    if (touchEnd && touchStart - touchEnd > 15) {
       handleSlide(current === length ? 1 : current + 1);
     }
 
-    if (diff < -10) {
+    if (touchEnd && touchStart - touchEnd < -15) {
       handleSlide(current === 1 ? length : current - 1);
     }
-
-    setTouchPosition(null);
   };
 
   return (
@@ -51,12 +48,13 @@ const Carousel = () => {
             }
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {data.order === current && (
-              <Image
-                source={data.bannerImageUrl}
+              <img
+                src={data.bannerImageUrl}
                 alt={data.bannerImageAlt}
-                className={"carousel__container__slide__image"}
+                className="carousel__container__slide__image"
               />
             )}
           </div>
@@ -76,12 +74,16 @@ const Carousel = () => {
       </button>
       <div className="carousel__nav">
         {ImageData.map((data) => (
-          <button
+          <Button
             key={data.id}
-            className="carousel__nav__dots"
+            className={
+              data.order === current
+                ? "carousel__nav__dots dots-active"
+                : "carousel__nav__dots"
+            }
             onClick={() => handleSlide(data.order)}
             aria-label={data.bannerImageAlt}
-          ></button>
+          ></Button>
         ))}
       </div>
     </section>

@@ -23,7 +23,7 @@ export default function ProductContextProvider({ children }) {
 
   function handleProduct(id) {
     setFilteredProduct(Products.filter((product) => product.category === id));
-    history.push({
+    history({
       pathname: `/products`,
       search: `?query=${id}`,
     });

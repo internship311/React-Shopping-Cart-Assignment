@@ -6,8 +6,8 @@ import Section from '../Section/Section';
 import './Home.scss';
 
 const Home = () => {
-    //const { filteredCategory } = useContext(ProductContext);
-    const { filteredCategory, handleProduct } = useProducts();
+    const { filteredCategory, handleProduct } = useContext(ProductContext);
+    //const { filteredCategory, handleProduct } = useProducts();
     return (
         <main className="home-container">
       <Carousel />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation, useMatch } from "react-router-dom";
 import Products from "../products/index.get.json";
 import Categories from "../categories/index.get.json";
@@ -15,7 +15,12 @@ const useProducts = () => {
   const [filteredProduct, setFilteredProduct] = useState(Products);
 
   function handleProduct(id) {
-    history(`/products/${id}`);
+    if (id) {
+      history(`/products/${id}`);
+    } else {
+      history(`/products`);
+    }
+
     window.scrollTo(0, 0);
   }
 
@@ -28,15 +33,6 @@ const useProducts = () => {
       );
     }
   }, [location]);
-
-  function handleProduct(id) {
-    setFilteredProduct(Products.filter((product) => product.category === id));
-    history({
-      pathname: `/products`,
-      search: `?query=${id}`,
-    });
-    window.scrollTo(0, 0);
-  }
 
   return {
     filteredCategory,

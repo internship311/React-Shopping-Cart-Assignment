@@ -8,8 +8,8 @@ import './Products.scss';
 import useProducts from '../../utils/useProducts';
 
 const Products = () => {
-    // const { filteredProduct, handleProduct } = useContext(ProductContext);
-    const { filteredCategory, filteredProduct, handleProduct } = useProducts();
+    const { filteredProduct, filteredCategory, handleProduct } = useContext(ProductContext);
+    //const { filteredCategory, filteredProduct, handleProduct } = useProducts();
 
     const browserWidth = useMediaQuery("(max-width: 480px)");
 
